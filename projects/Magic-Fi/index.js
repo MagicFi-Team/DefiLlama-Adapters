@@ -177,9 +177,9 @@ Object.keys(chainConfig).forEach(chain => {
 	const magicPPTokens = magicPPConfig[chain]
 	const { magicPPContract, magic, stakingContract, stakingContractV2 } = chainConfig[chain]
 
-	var tvl = 0
+	var stakingAmount = 0
 	if (magicPPContract != null) {
-		tvl = staking(magicPPContract, magicPPTokens, chain)
+		stakingAmount = staking(magicPPContract, magicPPTokens, chain)
 	}
 
 	var contracts = []
@@ -190,9 +190,9 @@ Object.keys(chainConfig).forEach(chain => {
 		contracts.push(stakingContractV2)
 	}
 
-	var stakingAmount = 0
+	var tvl = 0
 	if (magic != null) {
-		stakingAmount = stakings(contracts, magic, chain)
+		tvl = stakings(contracts, magic, chain)
 	}
 
 	module.exports[chain] = {
